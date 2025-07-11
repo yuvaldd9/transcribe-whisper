@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  transcription-service:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    volumes:
+      - ./uploads:/app/uploads
+      - ./temp_files:/app/temp_files
+    restart: unless-stopped
